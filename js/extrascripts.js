@@ -4,9 +4,18 @@ $(document).ready(function () {
     addlinkhrefs();
     opening();
     $('a.externallink, a.internallink, a.footnoteexternallink').attr('target', '_blank');
-    pagetitle();
-    subjectline();
-    getAge();
+    var num = 4;
+    var radius = 10;
+    var canvas = document.getElementById("canv");
+    canvas.width = document.body.clientWidth; //document.width is obsolete
+    canvas.height = document.body.clientHeight; //document.height is obsolete
+    var max = canvas.width;
+    createRandomNodes(100, 2, max);
+    var btnReset = document.getElementById("btnReset");
+    btnReset.addEventListener("click", function() {
+        createRandomNodes(num, radius, max);
+    });
+
 });
 
 function opening() {
@@ -61,10 +70,16 @@ function addlinkhrefs() {
 
 }
 
-function getAge() {
-    var dob = "1982-05-28"
-    dob = new Date(dob);
-    var today = new Date();
-    var age = Math.floor((today - dob) / (365.25 * 24 * 60 * 60 * 1000));
-    $('#age').text(age);
+function createRandomNodes(num, radius, max) {
+    var canvas = document.getElementById("canv");
+    var context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i <=num; i++) {
+        context.beginPath();
+        var rand_x = Math.random(i) * max;
+        var rand_y = Math.random(i) * max;
+        context.arc(rand_x, rand_y, radius, 0, 2*Math.PI);
+        context.fill();
+        context.closePath();
+    }
 }
