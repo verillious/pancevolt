@@ -44,6 +44,23 @@ span.on {
     display: inline;
 }
 
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+	animation-duration: .5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .shake {
     display: inline-block;
     text-indent: 0;
@@ -51,4 +68,15 @@ span.on {
 
 .shake:hover .shake:after{
     content: 'WHISPERS';
+}
+
+canvas {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    touch-action: none;
+    border: 1px dashed;
+    top:0;
+    left:0;
+    z-index: -1;
 }

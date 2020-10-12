@@ -12,24 +12,19 @@
         crossorigin="anonymous" />
     <script src="js/jquery.min.js"></script>
     <script src="js/rough-notation.js"></script>
+    <script src="js/rough.js"></script>
     <script src="js/extrascripts.js"></script>
     <link href="css/styles.css" rel="stylesheet">
     <title>pancevolt</title>
 </head>
-
-<body>
-    <div id="container">
-        <p>
-
-
             <!--There is something wrong with my hand. It's nothing im sure. Probably an attempt to poison me. Or a trick. It whispers to me sometimes.
 
 They know. I've asked one too many questions, snuck out one too many times, creeping through the shifting corridors. They're sending me away. A cleansed. Into the blight.
 
 It will be fine. My hand told me. -->
-        </p>
-    </div>
+<body>
     <div id="container">
+        <canvas id="canv"></canvas>
         <p>
             <span class="on"><a data-o="1">My name is Pancevolt</a><span data-ob="1"> Libourg <a data-o="2">Villehardain</a></span>.</span>
             <span data-ob="2"> I grew up in <a data-o="3" data-c="3" data-cb="3">a small village</a><span data-ob="3"><a data-o="4" data-c="4" data-cb="4">a small village</a><span data-ob="4"> one of the many small, nameless villages</span> in the shadow of <a data-o="5">Caer Kilerth</a></span>.</span>
@@ -50,16 +45,12 @@ It will be fine. My hand told me. -->
         <p>
             <span class="on">I don't <a data-o="28">sleep</a><span data-ob="28">, I only <a data-o="29">dream</a><span data-ob="29"> of <a data-o="30" data-c="30" data-cb="30">the pool</a><span data-ob="30"><a data-o="31" data-c="31" data-cb="31">the stars</a><span data-ob="31">watching <a data-o="32">Lumiere</a> <span data-ob="32"><a data-o="33">drown</a></span> in <span data-ob="33">the blackness of</span> the <a data-o="34">Library</a> <span data-ob="34">'s innermost chamber</span></span></span></span></span>.</span>
             The stars coallece into pure glowing light. I reach into the inky water and grasp it. I fragment into infinite glowing particles. I wake.
-
         </p>
         <p>
             <span class="on">Something <span class="shake shake-little shake-constant" ><a onmouseover="this.innerHTML='whispers';" onmouseout="this.innerHTML='calls';">calls</a></span> to me.</span>
         </p>
+
     </div>
-    <canvas id="canv" width=300 height=300></canvas>
-    <br />
-    <br />
-    <button id="btnReset">Reset</button>
 </body>
 
 </html>

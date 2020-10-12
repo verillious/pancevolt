@@ -4,24 +4,35 @@ $(document).ready(function () {
     addlinkhrefs();
     opening();
     $('a.externallink, a.internallink, a.footnoteexternallink').attr('target', '_blank');
-    var num = 4;
-    var radius = 10;
     var canvas = document.getElementById("canv");
-    canvas.width = document.body.clientWidth; //document.width is obsolete
-    canvas.height = document.body.clientHeight; //document.height is obsolete
-    var max = canvas.width;
-    createRandomNodes(100, 2, max);
-    var btnReset = document.getElementById("btnReset");
-    btnReset.addEventListener("click", function() {
-        createRandomNodes(num, radius, max);
-    });
-
+    var canvas = document.querySelector('canvas');
+    fitToContainer(canvas);
+    // fitToContainer(canvas);
+    // canvas.width = document.body.clientWidth; //document.width is obsolete
+    // canvas.height = window.innerHeight; //document.height is obsolete
 });
+
+
+
+function fitToContainer(canvas){
+  // Make it visually fill the positioned parent
+  canvas.style.width ='100%';
+  canvas.style.height='100%';
+  // ...then set the internal size to match
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
 
 function opening() {
     //this is the bit of code that makes the whole opening and closing text thing work.
     $('a[data-o]').click(function (e) {
+        var num = 4;
+        var radius = 10;
+        var canvas = document.getElementById("canv");
+        var max = canvas.width;
 
+        createRandomNodes(num, radius, max);
+        // fitToContainer(canvas);
         //this line just stops it visiting the href which is always #
         e.preventDefault();
         window.dispatchEvent(new Event('resize'));
@@ -72,14 +83,33 @@ function addlinkhrefs() {
 
 function createRandomNodes(num, radius, max) {
     var canvas = document.getElementById("canv");
-    var context = canvas.getContext("2d");
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    for (var i = 0; i <=num; i++) {
-        context.beginPath();
+    const rc = rough.canvas(canvas);
+    // var context = canvas.getContext("2d");
+    // context.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (var i = 0; i <= num; i++) {
+        // context.beginPath();
         var rand_x = Math.random(i) * max;
         var rand_y = Math.random(i) * max;
-        context.arc(rand_x, rand_y, radius, 0, 2*Math.PI);
-        context.fill();
-        context.closePath();
+        var rand_r = Math.random(i) * 10;
+        // context.arc(rand_x, rand_y, radius, 0, 2 * Math.PI);
+        rc.circle(rand_x, rand_y, rand_r, {
+            fill: '#11111',
+            fillStyle: 'solid', // solid fill
+            roughness: 0.5,
+            disableMultiStroke: true,
+            simplification: 1
+        });
+        // context.fill();
+        // context.closePath();
     }
+}
+
+function fitToContainer(canvas){
+  // Make it visually fill the positioned parent
+  canvas.style.width ='100%';
+  canvas.style.height='100%';
+  // ...then set the internal size to match
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 }
